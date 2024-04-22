@@ -1,0 +1,16 @@
+# 配置中心
+spring:
+  application:
+    name: nacos-config
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        file-extension: yaml
+        namespace: 6768d9cf-74c6-4912-a2a7-09a0b4cd797a
+        group: nacos-config
+debug: true

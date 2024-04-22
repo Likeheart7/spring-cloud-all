@@ -1,0 +1,18 @@
+server:
+  port: 8501
+spring:
+  application:
+    name: user-service
+  cloud:
+    nacos:
+      discovery:
+        namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+dubbo:
+  application:
+    name: user-dubbo
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters[namespace]: 391f529f-181f-4c58-9b05-1ef36a0af9c3 # 指定命名空间

@@ -1,0 +1,21 @@
+server:
+  port: 8601
+spring:
+  application:
+    name: sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 192.168.194.162:8858
+      eager: true # 项目启动的时候就初始化sentinel进行保护，但是会拖慢启动速度
+management:
+  endpoints:
+    web: #将所有可用的监控指标项对外暴露
+      exposure: #可以访问 /actuator/sentinel进行查看Sentinel监控项
+        include: '*'

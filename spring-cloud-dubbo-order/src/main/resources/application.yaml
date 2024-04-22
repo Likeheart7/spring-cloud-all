@@ -1,0 +1,24 @@
+server:
+  port: 8510
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3
+# dubbo与nacos的通信配置
+dubbo:
+  application:
+    name: order-dubbo
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters[namespace]: 391f529f-181f-4c58-9b05-1ef36a0af9c3 # 指定命名空间
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: com.chenx.dubbo #  Dubbo 对外暴露的接口必须放在该包下。
