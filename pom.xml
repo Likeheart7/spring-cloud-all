@@ -24,6 +24,9 @@
         <module>spring-cloud-dubbo-user</module>
         <module>spring-cloud-dubbo-order</module>
         <module>spring-cloud-sentinel</module>
+        <module>spring-cloud-sleuth-serviceA</module>
+        <module>spring-cloud-sleuth-serviceB</module>
+        <module>spring-cloud-sleuth-serviceC</module>
     </modules>
 
     <dependencies>

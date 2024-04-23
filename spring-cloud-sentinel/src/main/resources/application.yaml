@@ -14,8 +14,35 @@ spring:
       transport:
         dashboard: 192.168.194.162:8858
       eager: true # 项目启动的时候就初始化sentinel进行保护，但是会拖慢启动速度
+      # 下面的配置，是将sentinel得规则存储到nacos中的
+      # 微服务在启动时就会自动从 Nacos 配置中心 SAMPLE_GROUP 分组下载 data-id 为 sentinel-service-flow-rules 的配置信息并将其作为流控规则生效。
+      # 可以实现规则的热更新
+      datasource:
+        flowRule: # 数据源名称，可以自定义
+          nacos:
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3
+            dataId: ${spring.application.name}-flow-rules # 流控规则dataId，在配置中心设置时，dataId必须对应
+            group-id: SAMPLE_GROUP # 为groupId对应配置文件分组，对应配置中心得groups项
+            # 取值见：
+            # org.springframework.cloud.alibaba.sentinel.datasource.RuleType
+            rule-type: flow # flow固定，表示这个配置是流控规则
+            username: nacos
+            password: nacos
+        degrade: #熔断规则
+          nacos:
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: SAMPLE_GROUP
+            namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3
+            rule-type: degrade #代表熔断
+            username: nacos
+            password: nacos
 management:
   endpoints:
     web: #将所有可用的监控指标项对外暴露
       exposure: #可以访问 /actuator/sentinel进行查看Sentinel监控项
         include: '*'
+logging:
+  level:
+    root: debug #开启 debug 是学习需要，生产改为 info 即可

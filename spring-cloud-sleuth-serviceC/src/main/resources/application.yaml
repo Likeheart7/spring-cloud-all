@@ -1,0 +1,15 @@
+server:
+  port: 8703
+spring:
+  application:
+    name: sleuth-service-a
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3391f529f-181f-4c58-9b05-1ef36a0af9c3
+logging:
+  level:
+    root: debug #为演示需要，开启debug级别日志
