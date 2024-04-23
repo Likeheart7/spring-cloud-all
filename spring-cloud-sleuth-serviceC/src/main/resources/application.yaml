@@ -2,14 +2,20 @@ server:
   port: 8703
 spring:
   application:
-    name: sleuth-service-a
+    name: sleuth-service-c
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
         username: nacos
         password: nacos
-        namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3391f529f-181f-4c58-9b05-1ef36a0af9c3
+        namespace: 391f529f-181f-4c58-9b05-1ef36a0af9c3
+  sleuth:
+    sampler: # 采样器
+      probability: 1  # 采样率，默认0.1
+      rate: 1000  # 每秒最多采样次数
+  zipkin:
+    base-url: http://192.168.194.162:9411 # zipkin服务地址
 logging:
   level:
     root: debug #为演示需要，开启debug级别日志
