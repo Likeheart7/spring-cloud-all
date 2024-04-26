@@ -27,6 +27,7 @@
         <module>spring-cloud-sleuth-serviceA</module>
         <module>spring-cloud-sleuth-serviceB</module>
         <module>spring-cloud-sleuth-serviceC</module>
+        <module>spring-cloud-apollo-config</module>
     </modules>
 
     <dependencies>
